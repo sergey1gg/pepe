@@ -5,13 +5,13 @@ const About2 = () => {
     const [links, getLinks]=useState<boolean>(false)
     const [links2, getLinks2]=useState<boolean>(false)
     return (
-        <div>
+        <div className='md:p-5 p-0' id="about2">
             <div>
                 <div className="rounded-31xl bg-white w-full h-full overflow-hidden pb-5 text-mini mt-[48px] lg:mt-[60px] flex justify-center items-center">
                     <div className=" gap-[28px] flex items-center flex-col xl:flex-row-reverse">
                         <div>
                             <img
-                                className=" md:h-[504px] h-[200px] overflow-hidden object-cover items-center p-5"
+                                className=" h-full w-full scale-90 overflow-hidden object-cover items-center rounded-31xl"
                                 alt=""
                                 src="/img4@2x.png"
                             />
@@ -39,13 +39,16 @@ const About2 = () => {
 
                                 <div className="w-full h-auto my-2 bg-white rounded-2xl border border-stone-950 flex-col justify-center items-center gap-1 inline-flex" style={{border: '2px solid #081C00',
                                  display: links? 'inline-flex':'none'}}>
-                                    <div className="self-stretch py-2  hover:bg-neutral-100 rounded-2xl justify-center items-center gap-2.5 inline-flex">
+                                    <div className="self-stretch py-2  hover:bg-neutral-100 rounded-2xl justify-center items-center gap-2.5 inline-flex"
+                                    onClick={()=> window.location.href="https://etherscan.io/token/0x6982508145454ce325ddbe47a25d4ec3d2311933"}>
                                         <div className="text-center text-stone-950 text-xl font-normal uppercase leading-normal">EtherScan</div>
                                     </div>
-                                    <div className="py-2 self-stretch hover:bg-neutral-100 rounded-2xl justify-center items-center gap-2.5 inline-flex">
+                                    <div className="py-2 self-stretch hover:bg-neutral-100 rounded-2xl justify-center items-center gap-2.5 inline-flex"
+                                    onClick={()=> window.location.href="https://coinmarketcap.com/currencies/pepe/"}>
                                         <div className="text-center text-stone-950 text-xl font-normal uppercase leading-normal">Coinmarketcap</div>
                                     </div>
-                                    <div className="self-stretch py-2  hover:bg-neutral-100 rounded-2xl justify-center items-center gap-2.5 inline-flex">
+                                    <div className="self-stretch py-2  hover:bg-neutral-100 rounded-2xl justify-center items-center gap-2.5 inline-flex"
+                                    onClick={()=> window.location.href="https://www.coingecko.com/en/coins/pepe"}>
                                         <div className="text-center text-stone-950 text-xl font-normal uppercase leading-normal">Coingecko</div>
                                     </div>
                                 </div>
@@ -59,7 +62,7 @@ const About2 = () => {
                     <div className=" gap-[28px] flex items-center flex-col xl:flex-row">
                         <div>
                             <img
-                                className=" md:h-[504px] h-[200px] overflow-hidden object-cover items-center p-5 rounded-31xl "
+                                className="xl:h-[504px] h-full xl:w-auto w-full overflow-hidden object-cover items-center rounded-31xl scale-90 "
                                 alt=""
                                 src="/img4@3x.svg"
                             />
@@ -87,13 +90,16 @@ const About2 = () => {
 
                                 <div className="w-full h-auto my-2 bg-white rounded-2xl border border-stone-950 flex-col justify-center items-center gap-1 inline-flex" style={{border: '2px solid #081C00',
                                  display: links2? 'inline-flex':'none'}}>
-                                    <div className="self-stretch py-2  hover:bg-neutral-100 rounded-2xl justify-center items-center gap-2.5 inline-flex">
+                                    <div className="self-stretch py-2  hover:bg-neutral-100 rounded-2xl justify-center items-center gap-2.5 inline-flex"
+                                    onClick={()=> window.location.href="https://etherscan.io/token/0x423f4e6138e475d85cf7ea071ac92097ed631eea"}>
                                         <div className="text-center text-stone-950 text-xl font-normal uppercase leading-normal">EtherScan</div>
                                     </div>
-                                    <div className="py-2 self-stretch hover:bg-neutral-100 rounded-2xl justify-center items-center gap-2.5 inline-flex">
+                                    <div className="py-2 self-stretch hover:bg-neutral-100 rounded-2xl justify-center items-center gap-2.5 inline-flex"
+                                    onClick={()=> window.location.href="https://coinmarketcap.com/currencies/pond0x/"}>
                                         <div className="text-center text-stone-950 text-xl font-normal uppercase leading-normal">Coinmarketcap</div>
                                     </div>
-                                    <div className="self-stretch py-2  hover:bg-neutral-100 rounded-2xl justify-center items-center gap-2.5 inline-flex">
+                                    <div className="self-stretch py-2  hover:bg-neutral-100 rounded-2xl justify-center items-center gap-2.5 inline-flex"
+                                    onClick={()=> window.location.href="https://www.coingecko.com/en/coins/pondcoin"}>
                                         <div className="text-center text-stone-950 text-xl font-normal uppercase leading-normal">Coingecko</div>
                                     </div>
                                 </div>

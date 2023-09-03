@@ -7,7 +7,7 @@ interface PayProps {
 const Pay: React.FC<PayProps> = ({currentStep}) => {
   return (
     <div className='w-auto p-5'>
-        <Description/>
+        <Description currentStep={currentStep}/>
         <div className="w-full h-auto flex-col justify-start items-start gap-4 flex">
   <div className="text-center text-stone-950 text-base font-normal leading-normal">Address for replenishment</div>
   <div className="justify-start items-start gap-2 flex">

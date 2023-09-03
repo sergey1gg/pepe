@@ -1,16 +1,63 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
+import {useState, useEffect} from 'react'
+
+const serverUrl = process.env.REACT_APP_SERVER_URL;
+
+
 interface CartProps {
   toggleCard: () => void;
-  // другие ожидаемые пропсы
+
 }
 const Cart: React.FC<CartProps> = ({ toggleCard }) => {
   const navigate =useNavigate()
+  const [cart, setCart] = useState<{ product: any; size: string; color: string; quantity: number }[]>([]);
+  const [totalAmount, setTotalAmount] = useState<number>(0);
+
+  useEffect(() => {
+    const storedCart = JSON.parse(localStorage.getItem('cart') || '[]');
+    setCart(storedCart);
+
+    const newTotalAmount = storedCart.reduce((total: number, item: any) => {
+      return total + item.product.cost * item.quantity;
+    }, 0);
+
+    setTotalAmount(newTotalAmount);
+    console.log("effectcart")
+  }, []); 
+
+  console.log(cart)
+
+  
+  const updateQuantity = (index: number, newQuantity: number) => {
+    const updatedCart = [...cart];
+    updatedCart[index].quantity = newQuantity;
+    setCart(updatedCart);
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
+    updateTotalAmount(updatedCart);
+  };
+  const removeItem = (index: number) => {
+    const updatedCart = [...cart];
+    updatedCart.splice(index, 1);
+    setCart(updatedCart);
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
+    updateTotalAmount(updatedCart);
+  };
+  
+  const updateTotalAmount = (cartItems: any[]) => {
+    const newTotalAmount = cartItems.reduce((total, item) => {
+      return total + item.product.cost * item.quantity;
+    }, 0);
+
+    setTotalAmount(newTotalAmount);
+  };
+
   return (
     <>
-    <div className='font-caption top-0 backdrop-blur-2xl bg-opacity-20 w-full h-[1000px] absolute'/>
-    <div className="z-20  absolute top-[32px] w-full flex overflow-hidden text-left text-mid text-black ">
-      <div className="relative left-0 right-0 mx-auto rounded-[30px] bg-white w-auto h-auto overflow-hidden text-center text-mini flex items-center flex-col">
+    <div className="z-20  fixed top-[32px] w-full flex overflow-hidden text-left text-mid text-black  ">
+    <div className="fixed inset-0 bg-black opacity-50 z-10"></div>
+      <div className={`z-30 relative  left-0 right-0 mx-auto rounded-[30px] bg-white h-auto overflow-hidden text-center text-mini flex items-center flex-col
+      ${cart.length<1? 'w-[320px]': 'w-auto'}`}>
         <img
           className="w-6 h-6 overflow-hidden cursor-pointer ml-auto p-4"
           alt=""
@@ -18,37 +65,42 @@ const Cart: React.FC<CartProps> = ({ toggleCard }) => {
           onClick={toggleCard}
         />
         <div className=" text-xl leading-[24px] uppercase">
-          Your cart (1)
+          Your cart ({cart.length})
         </div>
 
         <div className="  flex flex-col items-start justify-start gap-[12px] text-left">
-          <div className="w-full flex flex-row items-center justify-start gap-[5px]">
+          {cart?.map((item: any,index)=>(
+
+
+          <div key={index} className="w-full flex flex-row items-center justify-start gap-[5px]">
             <img
               className=" w-auto h-[88px] object-cover"
               alt=""
-              src="/image@2x.png"
+              src={`${serverUrl}/public/tovars/${item?.product?.images[0]}`}
             />
             <div className="w-full flex flex-col items-start justify-start gap-[16px] p-5">
               <div className="self-stretch flex flex-row items-start justify-start gap-[16px]">
                 <div className="flex-1  leading-[20px] uppercase">
-                  pepka Cap
+                  {item.product.name}
                 </div>
                 <div className=" leading-[20px] uppercase text-center">
                   {" "}
-                  $56
+                  ${item.product.cost*item.quantity}
                 </div>
               </div>
               <div className="self-stretch flex flex-row items-start justify-start gap-[16px] text-center">
                 <div className="flex-1 flex flex-row items-center justify-start gap-[8px]">
                   <div className="rounded-21xl bg-primary flex flex-col py-0.5 px-3 items-start justify-start">
                     <div className=" leading-[20px] uppercase inline-block w-6">
-                      L
+                    {item.size}
                     </div>
                   </div>
-                  <div className=" rounded-[50%] bg-mediumslateblue box-border w-5 h-5 border-[1px] border-solid border-gainsboro" />
+                  <div className=" rounded-[50%] box-border w-5 h-5 border-[1px] border-solid border-gainsboro" 
+                  style={{background: item.color}}/>
                 </div>
                 <div className="rounded-131xl bg-whitesmoke w-[105px] overflow-hidden shrink-0 flex flex-row box-border items-center justify-center gap-[10px]">
-                  <div className=" rounded-131xl bg-primary w-6 h-6 overflow-hidden shrink-0">
+                  <div className=" rounded-131xl bg-primary w-6 h-6 overflow-hidden shrink-0"
+                  onClick={() => removeItem(index)}>
                     <img
                       className=" top-[calc(50%_-_10px)] left-[calc(50%_-_10px)] w-5 h-5 overflow-hidden"
                       alt=""
@@ -60,8 +112,9 @@ const Cart: React.FC<CartProps> = ({ toggleCard }) => {
                       src="/pinclipart-24@2x.png"
                     />
                   </div>
-                  <div className="flex-1 relative leading-[20px] uppercase">{`1 `}</div>
-                  <div className="relative rounded-131xl bg-primary w-6 h-6 overflow-hidden shrink-0">
+                  <div className="flex-1 relative leading-[20px] uppercase">{item.quantity}</div>
+                  <div className="relative rounded-131xl bg-primary w-6 h-6 overflow-hidden shrink-0"
+                   onClick={() => updateQuantity(index, item.quantity + 1)}>
                     <img
                       className=" top-[calc(50%_-_10px)] left-[calc(50%_-_10px)] w-5 h-5 overflow-hidden"
                       alt=""
@@ -77,15 +130,16 @@ const Cart: React.FC<CartProps> = ({ toggleCard }) => {
               </div>
             </div>
           </div>
+          ))}
         </div>
 
-        <div className="rounded-[20px] bg-whitesmoke w-full flex flex-col py-7 px-4 box-border items-start justify-start gap-[10px] text-left font-bod mt-48 lg:mt-96">
+        <div className="rounded-[20px] bg-whitesmoke w-full flex flex-col py-7 px-4 box-border items-start justify-start gap-[10px] text-left font-bod mt-48 lg:mt-72">
           <div className="self-stretch flex flex-row items-start justify-start gap-[16px]">
             <div className="flex-1  leading-[20px] uppercase font-medium">
               Discount
             </div>
             <div className=" leading-[20px] uppercase font-caption text-primary text-center">
-              –$30
+              –$0
             </div>
           </div>
           <div className="self-stretch flex flex-row items-start justify-start gap-[16px]">
@@ -93,7 +147,7 @@ const Cart: React.FC<CartProps> = ({ toggleCard }) => {
               Subtotal
             </div>
             <div className=" leading-[20px] uppercase font-caption text-center">
-              $129
+              ${totalAmount}
             </div>
           </div>
         </div>

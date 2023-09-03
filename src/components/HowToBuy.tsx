@@ -31,7 +31,6 @@ const featuresData = [
 ];
 const HowToBuy = () => {
     const [card,setActiveCard]=useState<number>()
-    console.log(card)
     const [currentSlide, setCurrentSlide] = useState(0);
 
     const nextSlide = () => {
@@ -54,7 +53,7 @@ const HowToBuy = () => {
   
     const visibleSlidesCount = getVisibleSlidesCount();
     return (
-        <div>
+        <div  className='md:p-5 p-0' id='how-buy'>
             <div className="flex flex-col items-center justify-start gap-[28px] w-full mt-[68px] lg:mt-[40px]  ">
                 <div className="self-stretch flex flex-row items-start justify-start">
                     <div className="flex-1 flex flex-row items-start justify-start">

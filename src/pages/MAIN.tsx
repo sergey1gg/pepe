@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 import Header from "../components/Header";
 import Featured from "../components/Featured";
 import About from "../components/About";
@@ -7,16 +7,36 @@ import NewsDrop from "../components/NewsDrop";
 import About2 from "../components/About2";
 import Categories from "../components/Categories";
 import Footer from "../components/Footer";
+import MainHeaderImg from "../utils/MainHeaderImg";
+import { getProducts } from "../api/items-api";
 
 const MAIN: FunctionComponent = () => {
+
+const [featuresData, setFeaturesData] = useState<any[]>([]);
+
+useEffect(()=>{
+    const fetchProducts = async () => {
+      try {
+        const products = await getProducts();
+        setFeaturesData(products) 
+
+      } catch (error) {
+        alert(error);
+      }
+    };
+    fetchProducts();
+  }, []);
+  const filteredData = featuresData.filter(item => item.featured === true);
+  const NewsDropData = featuresData.filter(item => item.newsDrop === true);
   return (
     <>
     <main className=" bg-primary w-full h-full text-left text-xl text-black font-h-1">
       <Header/>
-      <Featured/>
+      <MainHeaderImg/>
+      <Featured featuresData={filteredData}/>
       <About/>
       <HowToBuy/>
-      <NewsDrop/>
+      <NewsDrop featuresData={NewsDropData}/>
       <About2/>
       <Categories/>
       <Footer/>
