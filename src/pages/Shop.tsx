@@ -54,7 +54,7 @@ useEffect(()=>{
                     <input className="w-full rounded-21xl bg-surface overflow-hidden  py-3.5  pl-5 box-border relative gap-[16px] text-darkgray-300 font-body" placeholder='Gift card or discount'
                         style={{ background: 'url(image-38@2x.svg) no-repeat scroll right center', backgroundColor: 'rgb(245 245 245 / var(--tw-bg-opacity))' }} />
 
-                    <div className="relative rounded-[40px] bg-white box-border w-auto flex flex-row px-3 items-center justify-start gap-[8px] text-left text-mid text-black font-links border-[1px] border-solid border-black"
+                    <div className="relative rounded-[40px] bg-white box-border w-auto flex flex-row px-3 items-center justify-start gap-[8px] text-left text-mid text-black font-links border-[1px] border-solid border-black cursor-pointer"
                     onClick={()=> openFilter(true)}>
                         <img
                             className=" items-center relative w-6 h-6 overflow-hidden shrink-0"

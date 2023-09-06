@@ -87,8 +87,8 @@ const Pay: React.FC<PayProps> = ({currentStep}) => {
   </div>
 </div>
 <div className="mt-20 w-auto flex flex-row box-border items-center justify-between text-mini text-black font-button">
-    <div className='font-h-1' onClick={()=> currentStep(prev => prev-1)}>Back</div>
-                                <div className="rounded-131xl bg-primary  py-3 px-10  leading-[24px] uppercase font-h-1">
+    <div className='font-h-1 cursor-pointer' onClick={()=> currentStep(prev => prev-1)}>Back</div>
+                                <div className="rounded-131xl bg-primary  py-3 px-10  leading-[24px] uppercase font-h-1 cursor-pointer">
                                     Continue to shiping
                                 </div>
                             </div>

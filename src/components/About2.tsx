@@ -21,7 +21,7 @@ const About2 = () => {
                                 <span>Token </span>
                                 <span className="text-primary">$PNDC</span>
                             </div>
-                            <div className="self-stretch text-center px-10 leading-[24px] font-body"> PNDC it's a token drived by early adopters of PEPE which
+                            <div className="self-stretch text-center lg:text-left md:text-center px-10 lg:px-28 leading-[24px] font-body"> PNDC it's a token drived by early adopters of PEPE which
                                 according to the Pauly0x (founder) will change the game once
                                 and for all!</div>
                                 <div className='flex justify-center items-center flex-col cursor-pointer' >
@@ -40,15 +40,15 @@ const About2 = () => {
                                 <div className="w-full h-auto my-2 bg-white rounded-2xl border border-stone-950 flex-col justify-center items-center gap-1 inline-flex" style={{border: '2px solid #081C00',
                                  display: links? 'inline-flex':'none'}}>
                                     <div className="self-stretch py-2  hover:bg-neutral-100 rounded-2xl justify-center items-center gap-2.5 inline-flex"
-                                    onClick={()=> window.location.href="https://etherscan.io/token/0x6982508145454ce325ddbe47a25d4ec3d2311933"}>
+                                    onClick={()=> window.open('https://etherscan.io/token/0x6982508145454ce325ddbe47a25d4ec3d2311933', '_blank')}>
                                         <div className="text-center text-stone-950 text-xl font-normal uppercase leading-normal">EtherScan</div>
                                     </div>
                                     <div className="py-2 self-stretch hover:bg-neutral-100 rounded-2xl justify-center items-center gap-2.5 inline-flex"
-                                    onClick={()=> window.location.href="https://coinmarketcap.com/currencies/pepe/"}>
+                                    onClick={()=> window.open("https://coinmarketcap.com/currencies/pepe/", "_blank")}>
                                         <div className="text-center text-stone-950 text-xl font-normal uppercase leading-normal">Coinmarketcap</div>
                                     </div>
                                     <div className="self-stretch py-2  hover:bg-neutral-100 rounded-2xl justify-center items-center gap-2.5 inline-flex"
-                                    onClick={()=> window.location.href="https://www.coingecko.com/en/coins/pepe"}>
+                                    onClick={()=> window.open("https://www.coingecko.com/en/coins/pepe","_blank")}>
                                         <div className="text-center text-stone-950 text-xl font-normal uppercase leading-normal">Coingecko</div>
                                     </div>
                                 </div>
@@ -72,7 +72,7 @@ const About2 = () => {
                                 <span>Token </span>
                                 <span className="text-primary">$PEPE</span>
                             </div>
-                            <div className="self-stretch text-center px-10 leading-[24px] font-body"> PEPE is a deflationary memecoin launched on Ethereum.
+                            <div className="self-stretch text-center lg:text-left md:text-center px-10 lg:px-28 leading-[24px] font-body"> PEPE is a deflationary memecoin launched on Ethereum.
                                 The cryptocurrency was created as a tribute to the Pepe the Frog internet meme, created by Matt Furie,
                                 which gained popularity in the early 2000s.</div>
                             <div className='flex justify-center items-center flex-col cursor-pointer'>
@@ -91,15 +91,15 @@ const About2 = () => {
                                 <div className="w-full h-auto my-2 bg-white rounded-2xl border border-stone-950 flex-col justify-center items-center gap-1 inline-flex" style={{border: '2px solid #081C00',
                                  display: links2? 'inline-flex':'none'}}>
                                     <div className="self-stretch py-2  hover:bg-neutral-100 rounded-2xl justify-center items-center gap-2.5 inline-flex"
-                                    onClick={()=> window.location.href="https://etherscan.io/token/0x423f4e6138e475d85cf7ea071ac92097ed631eea"}>
+                                    onClick={()=> window.open("https://etherscan.io/token/0x423f4e6138e475d85cf7ea071ac92097ed631eea", "_blank")}>
                                         <div className="text-center text-stone-950 text-xl font-normal uppercase leading-normal">EtherScan</div>
                                     </div>
                                     <div className="py-2 self-stretch hover:bg-neutral-100 rounded-2xl justify-center items-center gap-2.5 inline-flex"
-                                    onClick={()=> window.location.href="https://coinmarketcap.com/currencies/pond0x/"}>
+                                    onClick={()=> window.open("https://coinmarketcap.com/currencies/pond0x/", "_blank")}>
                                         <div className="text-center text-stone-950 text-xl font-normal uppercase leading-normal">Coinmarketcap</div>
                                     </div>
                                     <div className="self-stretch py-2  hover:bg-neutral-100 rounded-2xl justify-center items-center gap-2.5 inline-flex"
-                                    onClick={()=> window.location.href="https://www.coingecko.com/en/coins/pondcoin"}>
+                                    onClick={()=> window.open("https://www.coingecko.com/en/coins/pondcoin", "_blank")}>
                                         <div className="text-center text-stone-950 text-xl font-normal uppercase leading-normal">Coingecko</div>
                                     </div>
                                 </div>

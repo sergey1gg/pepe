@@ -87,14 +87,14 @@ const Payment = () => {
                             <Pay currentStep={currentStep}/> 
                         ): null}
                     </div>
-                    <div className=" flex flex-col items-center justify-between rounded-11xl bg-white h-full overflow-hidden">
+                    <div className=" flex flex-col items-center justify-between rounded-11xl bg-white h-full overflow-hidden p-2">
                         <div className="w-full top-[24px] left-[20px] flex flex-col items-center justify-start gap-[12px] font-button">
                             <div className="w-full flex flex-col items-center justify-center gap-[5px] ">
                             {cart?.map((item: any,index)=>(
                                 <div className='flex w-full lg:scale-90 scale-100 xl:scale-100'>
                                 <img
                                 key={index}
-                                    className="relativew-auto h-[88px] object-cover"
+                                    className="relativew-auto h-[88px] lg:h-[74px] xl:h-[88px] object-cover"
                                     alt=""
                                     src={`${serverUrl}/public/tovars/${item?.product?.images[0]}`}
                                 />

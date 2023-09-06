@@ -13,12 +13,12 @@ const About = () => {
           />
           </div>
           <div className='flex flex-col gap-6 text-center items-center'>
-            <div className=" text-21xl leading-[44px] uppercase">
+            <div className=" md:text-21xl text-11xl leading-[44px] uppercase">
               <span>{` About `}</span>
               <span className="text-primary">CopeNothing</span>
             </div>
-            <div className="self-stretch text-center px-10 leading-[24px] font-body">{`Are you ready for COPE? Our team has worked hard to create a unique merch for pepe & pndc holders. All our products are manufactured using the most modern technologies and high-quality materials. They are not only stylish and unique, but also comfortable to use. We strive to provide our customers with a high level of satisfaction and joy from shopping.`}</div>
-            <div className="rounded-131xl bg-primary w-[213px] flex flex-row py-5 px-10 box-border items-center justify-center gap-[8px]">
+            <div className="self-stretch text-center lg:text-left md:text-center px-10 leading-[24px] font-body">{`Are you ready for COPE? Our team has worked hard to create a unique merch for pepe & pndc holders. All our products are manufactured using the most modern technologies and high-quality materials. They are not only stylish and unique, but also comfortable to use. We strive to provide our customers with a high level of satisfaction and joy from shopping.`}</div>
+            <div className="rounded-131xl bg-primary w-[213px] flex flex-row py-5 px-10 box-border items-center justify-center gap-[8px] cursor-pointer">
               <img
                 className=" w-6 h-6 overflow-hidden"
                 alt=""

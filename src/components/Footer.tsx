@@ -18,29 +18,29 @@ const Footer = () => {
       <div className=" top-[10px] left-[10px] w-full h-auto flex flex-col items-start justify-start gap-[12px] scale-95">
         <div className="flex self-stretch relative rounded-xl bg-white w-full h-auto overflow-hidden shrink-0">
           <div className="w-full lg:h-[122px] h-auto flex lg:flex-row flex-col items-center justify-start gap-[8px] p-3">
-            <div className="self-stretch flex-1 rounded-xl bg-surface flex flex-row  items-center justify-center p-3"
+            <div className="self-stretch flex-1 rounded-xl bg-surface flex flex-row  items-center justify-center p-3 cursor-pointer"
             onClick={()=>navigate("/shop")}>
               <div className=" leading-[24px] uppercase">
                 Shop
               </div>
             </div>
-            <div className="self-stretch flex-1 rounded-xl bg-surface flex flex-row  items-center justify-center p-3">
-              <a href='#copenothing' className=' text-black no-underline'>
+            <div className="self-stretch flex-1 rounded-xl bg-surface flex flex-row  items-center justify-center p-3  cursor-pointer">
+              <a onClick={()=> navigate("/#copenothing")} className=' text-black no-underline'>
               <div className=" leading-[24px] uppercase">
                 CopeNothing
               </div>
               </a>
             </div>
             
-            <div className="self-stretch flex-1 rounded-xl bg-surface flex flex-row  items-center justify-center p-3">
-              <a href='#how-buy' style={{textDecoration: "none", color: 'black'}}>
+            <div className="self-stretch flex-1 rounded-xl bg-surface flex flex-row  items-center justify-center p-3 cursor-pointer">
+              <a onClick={()=> navigate("/#how-buy")} style={{textDecoration: "none", color: 'black'}}>
               <div className=" leading-[24px] uppercase">
                 How to buy
               </div>
               </a>
             </div>
-            <div className="self-stretch flex-1 rounded-xl bg-surface flex flex-row  items-center justify-center p-3">
-            <a href='#about2' style={{textDecoration: "none", color: 'black'}}>
+            <div className="self-stretch flex-1 rounded-xl bg-surface flex flex-row  items-center justify-center p-3 cursor-pointer">
+            <a  onClick={()=> navigate("/#about2")} style={{textDecoration: "none", color: 'black'}}>
               <div className=" leading-[24px] uppercase">
                 Tokens
               </div>
@@ -54,7 +54,7 @@ const Footer = () => {
               Are there any issues with the delivery or payment
               confirmation?
             </div>
-            <div className="rounded-131xl bg-primary w-[310px] flex flex-row py-3 px-10 box-border items-center justify-center">
+            <div className="rounded-131xl bg-primary w-[310px] flex flex-row py-3 px-10 box-border items-center justify-center cursor-pointer">
               <div className="flex-1 relative leading-[24px] uppercase">
                 {" "}
                 contact support

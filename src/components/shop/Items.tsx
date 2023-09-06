@@ -61,7 +61,7 @@ const [card,setActiveCard]=useState<number>()
                       ):
                       (
                           <>
-                      <div onClick={()=> navigate(`/product/${item._id}`)}>
+                      <div className='' onClick={()=> navigate(`/product/${item._id}`)}>
                       <div className=" xl:top-[512px] top-[352px] left-[36px] flex flex-row items-start justify-end gap-[0] lg:gap-0 xl:gap-[150px] md:gap-[57px]">
                       <div className="  rounded-21xl bg-overlay [backdrop-filter:blur(40px)] flex flex-row py-2.5 px-5 m-5 items-center justify-center text-center text-mini">
                           <div className=" leading-[20px] uppercase">20/50</div>
@@ -85,7 +85,7 @@ const [card,setActiveCard]=useState<number>()
                               </div>
                              
                           </div>
-                          <div className="rounded-131xl bg-primary xl:w-[124px] md:w-[50px] hidden md:flex flex-row py-7 px-10 box-border items-center justify-center "
+                          <div className="rounded-131xl bg-primary xl:w-[124px] md:w-[50px] hidden md:flex flex-row py-7 px-10 box-border items-center justify-center cursor-pointer "
                           onClick={()=> navigate(`/product/${item._id}`)}>
                               <img
                                   className=" w-6 h-6 overflow-hidden shrink-0"

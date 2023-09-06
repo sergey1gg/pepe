@@ -26,6 +26,14 @@ useEffect(()=>{
     };
     fetchProducts();
   }, []);
+  if (window.location.hash) {
+    const elementId = window.location.hash.substring(1); // Удалите "#" из хеша
+    const element = document.getElementById(elementId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+  
   const filteredData = featuresData.filter(item => item.featured === true);
   const NewsDropData = featuresData.filter(item => item.newsDrop === true);
   return (
@@ -36,7 +44,7 @@ useEffect(()=>{
       <Featured featuresData={filteredData}/>
       <About/>
       <HowToBuy/>
-      <NewsDrop featuresData={NewsDropData}/>
+      <NewsDrop featuresData={[...NewsDropData, ...NewsDropData,...NewsDropData,...NewsDropData,...NewsDropData]}/>
       <About2/>
       <Categories/>
       <Footer/>

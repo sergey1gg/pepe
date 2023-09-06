@@ -26,6 +26,8 @@ const Product = () => {
       try {
         const products = await getProductById(id);
         setFeaturesData(products)
+        selectedColor(products.colors[0])
+        selectedSize(products.sizes[0])
       } catch (error) {
         console.error('Ошибка при получении продуктов:', error);
       }
@@ -113,7 +115,7 @@ const Product = () => {
               {featuresData.sizes?.map((size: any, index: any) => (
                 <div className="flex flex-col">
                
-                  <div key={index} className=" rounded-2xl flex flex-row py-3 px-5 items-center justify-center text-black border-[1px] border-solid border-surface"
+                  <div key={index} className=" rounded-2xl flex flex-row py-3 px-5 items-center justify-center text-black border-[1px] border-solid border-surface cursor-pointer"
                   style={{borderColor: sizeChoice===size? '#87E464': ''}}
                   onClick={()=> selectedSize(size)}>
                     <div className="relative leading-[24px] uppercase">{size}</div>
@@ -129,7 +131,7 @@ const Product = () => {
               </div>
               <div className="w-auto flex flex-row items-start justify-start gap-[8px]">
               {featuresData.colors?.map((color: any, index: any) => (
-                <div key={index} className="relative rounded-[50%]  box-border w-7 h-7 border-[2px] border-solid border-gainsboro" style={{background: `${color}`,
+                <div key={index} className="relative rounded-[50%]  box-border w-7 h-7 border-[2px] border-solid border-gainsboro cursor-pointer" style={{background: `${color}`,
                  borderColor: colorChoice===color? '#87E464': 'black'}}
                 onClick={()=> selectedColor(color)}/>
               ))}
@@ -140,7 +142,7 @@ const Product = () => {
                 Quantity
               </div>
               <div className="rounded-131xl bg-surface xl:w-[300px] w-full overflow-hidden flex flex-row p-1.5 box-border items-center justify-center gap-[10px] text-center">
-                <div className="relative rounded-131xl bg-primary w-12 h-12 overflow-hidden shrink-0 flex justify-center items-center"
+                <div className="relative rounded-131xl bg-primary w-12 h-12 overflow-hidden shrink-0 flex justify-center items-center cursor-pointer"
                 onClick={()=> {quantity>1 ? setQuantity(prev => prev-1): null}}>
                   <img
                     className=" top-[calc(50%_-_12px)] left-[calc(50%_-_12px)] w-6 h-6 overflow-hidden"
@@ -150,7 +152,7 @@ const Product = () => {
 
                 </div>
                 <div className="flex-1 relative leading-[24px] uppercase">{quantity}</div>
-                <div className="relative rounded-131xl bg-primary w-12 h-12 overflow-hidden shrink-0 flex justify-center items-center"
+                <div className="relative rounded-131xl bg-primary w-12 h-12 overflow-hidden shrink-0 flex justify-center items-center cursor-pointer"
                  onClick={()=> setQuantity(prev => prev+1)}>
                   <img
                     className=" top-[calc(50%_-_12px)] left-[calc(50%_-_12px)] w-6 h-6 overflow-hidden"
@@ -162,14 +164,14 @@ const Product = () => {
               </div>
             </div>
           </div>
-          <div className=" xl:mt-[72px] mt-[28px] rounded-131xl bg-primary w-auto h-auto flex flex-row py-5 px-10 box-border items-center justify-center text-center text-mini"
+          <div className=" xl:mt-[72px] mt-[28px] rounded-131xl bg-primary w-auto h-auto flex flex-row py-5 px-10 box-border items-center justify-center text-center text-mini cursor-pointer"
           onClick={handleAddCart}>
             <div className="flex-1 relative leading-[24px] uppercase">
               Add to cart
             </div>
           </div>
           <div className=" rounded-xl bg-surface w-auto flex flex-row my-5 py-1 pr-5 pl-1 box-border items-center justify-start gap-[20px] text-mini">
-            <div className="rounded-mini bg-white overflow-hidden flex flex-row py-3 px-4 items-start justify-start">
+            <div className="rounded-mini  overflow-hidden flex flex-row py-3 px-4 items-start justify-start">
               <img
                 className="relative rounded-31xl md:w-16 h-auto "
                 alt=""
@@ -181,7 +183,8 @@ const Product = () => {
             </div>
           </div>
           <div className="w-full flex flex-col items-start justify-start gap-[12px]">
-            <div className="rounded-xl bg-surface w-full flex flex-col p-7 box-border items-center justify-center gap-[28px]">
+            <div className="rounded-xl bg-surface w-full flex flex-col p-7 box-border items-center justify-center gap-[28px] cursor-pointer"
+            onClick={()=> openDesc(!desc)}>
               <div className="self-stretch flex flex-row items-center justify-center">
                 <div className="flex-1 relative leading-[24px] uppercase">
                   Description
@@ -190,7 +193,7 @@ const Product = () => {
                   className="relative w-6 h-6 overflow-hidden shrink-0"
                   alt=""
                   src={desc ? '/minus.svg' : '/plus.svg'}
-                  onClick={()=> openDesc(!desc)}
+                  
                 />
               </div>
               <div className={`self-stretch relative text-mini leading-[24px] font-body ${desc? 'block': 'hidden'}`}>

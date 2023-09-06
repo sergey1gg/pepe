@@ -47,28 +47,29 @@ const Header = () => {
 </div>
         </div>
         <div className="cursor-pointer absolute xl:flex hidden left-1/2 transform -translate-x-1/2 rounded-131xl bg-white flex-row p-1 items-start justify-start gap-[3px]">
-            <div className="rounded-21xl hover:bg-black w-[33%] flex flex-row py-3 px-4 box-border items-center justify-between hover:text-white"
+            <div className="rounded-21xl hover:bg-black transition duration-500 ease-in-out w-[33%] flex flex-row py-3 px-4 box-border items-center justify-between hover:text-white"
             onClick={()=> navigate("/")}>
                 <div className="uppercase">Home</div>
             </div>
-            <div className="rounded-21xl hover:bg-black hover:text-white w-[33%] flex flex-row py-3 px-4 box-border items-center justify-between"
+            <div className="rounded-21xl hover:bg-black transition duration-500 ease-in-out hover:text-white w-[33%] flex flex-row py-3 px-4 box-border items-center justify-between"
             onClick={()=> navigate("/shop")}>
                 <div className="  uppercase">Shop</div>
             </div>
-            <div className="rounded-21xl hover:bg-black hover:text-white w-[34%] flex flex-row py-3 px-4 box-border items-center justify-between">
+            <div className="rounded-21xl hover:bg-black transition duration-500 ease-in-out hover:text-white w-[34%] flex flex-row py-3 px-4 box-border items-center justify-between">
                 <div className=" uppercase">About</div>
             </div>
         </div>
 
         <img
-            className=" top-[calc(50% - 29px)] left-[27px] w-16 h-[58px] object-cover"
+            className=" top-[calc(50% - 29px)] left-[27px] w-16 h-[58px] object-cover cursor-pointer"
             src="/logo@2x.png"
+            onClick={()=> navigate("/")}
         />
     </div>
 
 </div>
 
-<div className={` text-center ${currentUrl==='/shop' ||  currentUrl.startsWith('/product/') ? 'mt-[52px]': ' md:mt-48 mt-28'}` }>
+<div className={` text-center ${currentUrl==='/shop' ||  currentUrl.startsWith('/product/') ? 'mt-[52px]': ' mt-[30vh]'}` }>
 
 <div
     className={`mx-auto my-auto text-xl md:text-21xl leading-[44px] uppercase font-rubik-bubbles text-center [-webkit-text-stroke:1px_#fff] 
@@ -76,7 +77,7 @@ const Header = () => {
   >MERCH STORE</div>
   <img
     className={` mx-auto my-auto w-[310px]
-    h-[46px] lg:w-[896px] lg:h-[128px] md:w-[720px] md:h-[102px]  object-cover ${ currentUrl.startsWith('/product/')? 'hidden': ''}`}
+    h-[46px] lg:w-[896px] lg:h-[128px] md:w-[720px] md:h-[102px] xl:w-[1150px]  object-cover ${ currentUrl.startsWith('/product/')? 'hidden': ''}`}
     src="/asset-18x-11@2x.png"
   />
   </div>

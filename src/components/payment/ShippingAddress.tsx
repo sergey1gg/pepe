@@ -129,7 +129,7 @@ useEffect(() => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="font-h-1 rounded-131xl bg-primary md:w-auto w-full flex flex-row py-3 px-10 box-border items-center justify-center text-mini text-black font-button"
+                            <div className=" w-full flex flex-row box-border items-center justify-between text-mini text-black font-button"
                             onClick={() => {
                                 if (canContinue) {
                                   localStorage.setItem('shippingData', JSON.stringify({
@@ -149,11 +149,14 @@ useEffect(() => {
                                 }
                               }}
                             style={{ opacity: canContinue ? 1 : 0.5 }}>
-                                <div className="flex-1 relative leading-[24px] uppercase">
+                             
+    <div className='font-h-1 cursor-pointer' onClick={()=> window.location.href="/"}>Back</div>
+                                <div className="rounded-131xl bg-primary  py-3 px-10  leading-[24px] uppercase font-h-1 cursor-pointer">
                                     Continue to shiping
                                 </div>
                             </div>
-                        </div>
+                            </div>
+
 </>
   )
 }

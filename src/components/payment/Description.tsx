@@ -18,13 +18,13 @@ const Description: React.FC<Description> = ({currentStep}) => {
     <div className="md:self-stretch items-start gap-4 flex md:flex-row flex-col justify-between">
       <div className=" shrink basis-0 text-neutral-500 text-xs font-normal leading-normal">Email</div>
       <div className="w-auto text-stone-950 text-xs font-normal leading-normal">{email} </div>
-      <div className="w-auto text-lime-400 text-xs font-normal leading-normal"
+      <div className="w-auto text-lime-400 text-xs font-normal leading-normal cursor-pointer"
       onClick={()=> currentStep(2)}> Change</div>
     </div>
     <div className="md:self-stretch items-start gap-4 flex md:flex-row flex-col justify-between">
       <div className=" shrink basis-0 text-neutral-500 text-xs font-normal leading-normal">Spawn to</div>
       <div className="w-auto text-left md:text-center text-stone-950 text-xs font-normal leading-normal">{spawn}</div>
-      <div className="w-auto text-lime-400 text-xs font-normal leading-normal"
+      <div className="w-auto text-lime-400 text-xs font-normal leading-normal cursor-pointer"
       onClick={()=>currentStep(2)}> Change</div>
     </div>
   </div>

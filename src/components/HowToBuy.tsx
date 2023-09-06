@@ -1,5 +1,9 @@
 import React from 'react'
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
 const featuresData = [
     {
         id: 1,
@@ -30,19 +34,15 @@ const featuresData = [
 
 ];
 const HowToBuy = () => {
+  const slider = React.useRef<any>(null);
+
     const [card,setActiveCard]=useState<number>()
     const [currentSlide, setCurrentSlide] = useState(0);
 
-    const nextSlide = () => {
-      setCurrentSlide((prev) => (prev + 1) % featuresData.length);
-    };
-  
-    const prevSlide = () => {
-      setCurrentSlide((prev) => (prev - 1 + featuresData.length) % featuresData.length);
-    };
-  
     const getVisibleSlidesCount = () => {
-      if (window.innerWidth >= 1024) {
+      if (window.innerWidth >= 1440) {
+        return 4;
+      } else if (window.innerWidth >= 1024) {
         return 3;
       } else if (window.innerWidth >= 768) {
         return 2;
@@ -52,10 +52,16 @@ const HowToBuy = () => {
     };
   
     const visibleSlidesCount = getVisibleSlidesCount();
+    const settings = {
+      speed: 500, // Скорость анимации перехода между слайдами (миллисекунды)
+      infinite: false,
+      slidesToShow: visibleSlidesCount, // Количество отображаемых слайдов
+      slidesToScroll: 1, // Количество слайдов, переключаемых за один раз
+    };
     return (
-        <div  className='md:p-5 p-0' id='how-buy'>
-            <div className="flex flex-col items-center justify-start gap-[28px] w-full mt-[68px] lg:mt-[40px]  ">
-                <div className="self-stretch flex flex-row items-start justify-start">
+        <div  className='md:px-3 px-0' id='how-buy'>
+            <div className=" gap-[28px] w-full block mt-[68px] lg:mt-[40px]  ">
+                <div className="self-stretch flex flex-row items-start justify-start md:px-2 px-0 mb-[28px]">
                     <div className="flex-1 flex flex-row items-start justify-start">
                         <div className="rounded-131xl bg-white flex flex-row py-5 px-[10px] items-center justify-center">
                             <div className="relative leading-[24px] uppercase text-mini lg:text-xl">
@@ -65,46 +71,44 @@ const HowToBuy = () => {
                     </div>
                     <div className="rounded-121xl bg-white flex flex-row p-1 items-start justify-start gap-[4px]">
                         <img
-                            className="relative rounded-131xl w-14 h-14"
+                            className="relative rounded-131xl w-14 h-14 cursor-pointer"
                             alt=""
                             src="/1.svg"
-                            onClick={prevSlide}
+                            onClick={() => slider?.current?.slickPrev()}
                         />
                         <img
-                            className="relative rounded-131xl w-14 h-14"
+                            className="relative rounded-131xl w-14 h-14 cursor-pointer"
                             alt=""
                             src="/2.svg"
-                            onClick={nextSlide}
+                            onClick={() => slider?.current?.slickNext()}
                         />
                     </div>
+
+                    
                 </div>
 
-                <div className="w-full gap-[20px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 flex-row items-start justify-start  text-left">
-                {featuresData.map((item,index) => ( 
-                <div key={item.id} className={`relative rounded-31xl bg-white  overflow-hidden shrink-0
-                ${
-                    (index >= currentSlide && index < currentSlide + visibleSlidesCount) ? 'block' : 'hidden'
-                  }`}>
+                <Slider {...settings} ref={slider} arrows={false} >
+          {featuresData.map((item, index) => (
+            <div key={item.id} className="relative rounded-31xl bg-white overflow-hidden md:scale-95 scale-100">
               <img
-                className="w-full scale-95 rounded-21xl  overflow-hidden"
+                className="w-full scale-95 rounded-21xl overflow-hidden"
                 alt=""
                 src={item.img}
               />
-              {item.name !=="" ?(
-              <div className="my-10 leading-[24px] uppercase text-center">
-              {item.name}
-            </div>
-              ):(
+              {item.name !== "" ? (
+                <div className="my-10 leading-[24px] uppercase text-center">
+                  {item.name}
+                </div>
+              ) : (
                 ""
               )}
-
             </div>
-            ))}
-                       
-                </div>       
-            </div>
+          ))}
+        </Slider>
         </div>
-    )
-}
+      </div>
+
+  );
+};
 
 export default HowToBuy

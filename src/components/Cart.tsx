@@ -56,10 +56,10 @@ const Cart: React.FC<CartProps> = ({ toggleCard }) => {
     <>
     <div className="z-20  fixed top-[32px] w-full flex overflow-hidden text-left text-mid text-black  ">
     <div className="fixed inset-0 bg-black opacity-50 z-10"></div>
-      <div className={`z-30 relative  left-0 right-0 mx-auto rounded-[30px] bg-white h-auto overflow-hidden text-center text-mini flex items-center flex-col
-      ${cart.length<1? 'w-[320px]': 'w-auto'}`}>
+      <div className={`z-30 relative left-0 right-0 mx-auto rounded-[30px] bg-white h-auto overflow-hidden text-center text-mini flex items-center flex-col p-5
+      ${cart.length>3? 'w-full lg:w-auto': 'w-full lg:w-[320px]'}`}>
         <img
-          className="w-6 h-6 overflow-hidden cursor-pointer ml-auto p-4"
+          className="w-6 h-6 overflow-hidden cursor-pointer ml-auto"
           alt=""
           src="/close3.svg"
           onClick={toggleCard}
@@ -68,7 +68,7 @@ const Cart: React.FC<CartProps> = ({ toggleCard }) => {
           Your cart ({cart.length})
         </div>
 
-        <div className="  flex flex-col items-start justify-start gap-[12px] text-left">
+        <div className="  flex flex-col items-start justify-start gap-[12px] text-left ">
           {cart?.map((item: any,index)=>(
 
 
@@ -78,7 +78,7 @@ const Cart: React.FC<CartProps> = ({ toggleCard }) => {
               alt=""
               src={`${serverUrl}/public/tovars/${item?.product?.images[0]}`}
             />
-            <div className="w-full flex flex-col items-start justify-start gap-[16px] p-5">
+            <div className="w-full flex flex-col items-start justify-start gap-[16px] ">
               <div className="self-stretch flex flex-row items-start justify-start gap-[16px]">
                 <div className="flex-1  leading-[20px] uppercase">
                   {item.product.name}
@@ -98,7 +98,7 @@ const Cart: React.FC<CartProps> = ({ toggleCard }) => {
                   <div className=" rounded-[50%] box-border w-5 h-5 border-[1px] border-solid border-gainsboro" 
                   style={{background: item.color}}/>
                 </div>
-                <div className="rounded-131xl bg-whitesmoke w-[105px] overflow-hidden shrink-0 flex flex-row box-border items-center justify-center gap-[10px]">
+                <div className="rounded-131xl bg-[#F5F5F5] w-[105px] overflow-hidden shrink-0 flex flex-row box-border items-center justify-center gap-[10px]">
                   <div className=" rounded-131xl bg-primary w-6 h-6 overflow-hidden shrink-0"
                   onClick={() => removeItem(index)}>
                     <img
@@ -133,7 +133,7 @@ const Cart: React.FC<CartProps> = ({ toggleCard }) => {
           ))}
         </div>
 
-        <div className="rounded-[20px] bg-whitesmoke w-full flex flex-col py-7 px-4 box-border items-start justify-start gap-[10px] text-left font-bod mt-48 lg:mt-72">
+        <div className="rounded-[20px] bg-[#F5F5F5] w-full flex flex-col py-7 px-4 box-border items-start justify-start gap-[10px] text-left font-bod mt-48 lg:mt-72 mb-2">
           <div className="self-stretch flex flex-row items-start justify-start gap-[16px]">
             <div className="flex-1  leading-[20px] uppercase font-medium">
               Discount
@@ -151,12 +151,12 @@ const Cart: React.FC<CartProps> = ({ toggleCard }) => {
             </div>
           </div>
         </div>
-        <div className=" rounded-131xl bg-primary w-full flex flex-row py-3 px-10 box-border items-center justify-center">
+        <div className=" rounded-131xl bg-primary w-full flex flex-row py-3 px-10 box-border items-center justify-center cursor-pointer">
           <div className="flex-1  leading-[24px] uppercase" onClick={()=> navigate("/payment")}>
             Checkout
           </div>
         </div>
-        <div className="text-[14px] leading-[24px] font-body inline-block w-auto">
+        <div className="text-[14px] leading-[24px] font-body inline-block w-auto mt-5">
           <span>By clicking the button I agree<br/>with the </span>
           <span className="text-primary">Privacy Policy</span>
         </div>
