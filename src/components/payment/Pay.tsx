@@ -58,7 +58,7 @@ const Pay: React.FC<PayProps> = ({currentStep, totalAmount}) => {
   useEffect(() => {
     const checkPaymentStatus = async () => {
       try {
-        const response =  await getTransactions(address, email, pepeCount, JSON.stringify(shippingData), JSON.stringify(cart)); 
+        const response =  await getTransactions(address, email, pepeCount, pondCount, JSON.stringify(shippingData), JSON.stringify(cart)); 
         if (response) {
           if(response.result===true){
             window.location.href="/success"
