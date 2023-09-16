@@ -22,6 +22,24 @@ body {
 .slick-track {
   margin-left:0;
 }
+.timer-bar {
+  height: 3px; /* Высота полоски времени */
+  background-color: #ff9900; /* Цвет полоски времени */
+  width: 300px; /* Начальная ширина полоски времени (100% - полная ширина) */
+  animation: timer-animation 3s linear forwards; /* Название анимации и продолжительность */
+  margin-top: -5px;
+  z-index: 40;
+}
+
+@keyframes timer-animation {
+  0% {
+    width: 300px; /* Начальная ширина полоски времени (100% - полная ширина) */
+  }
+
+  100% {
+    width: 0; /* Конечная ширина полоски времени (0% - полная ширина) */
+  }
+}
 
 input {
   border: none;

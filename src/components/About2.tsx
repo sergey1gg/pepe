@@ -37,7 +37,7 @@ const About2 = () => {
                                     />
                                 </div>
 
-                                <div className="w-full h-auto my-2 bg-white rounded-2xl border border-stone-950 flex-col justify-center items-center gap-1 inline-flex" style={{border: '2px solid #081C00',
+                                <div className="w-auto absolute mt-[228px] z-10 px-10  h-auto my-2 bg-white rounded-2xl border border-stone-950 flex-col justify-center items-center gap-1 inline-flex" style={{border: '2px solid #081C00',
                                  display: links? 'inline-flex':'none'}}>
                                     <div className="self-stretch py-2  hover:bg-neutral-100 rounded-2xl justify-center items-center gap-2.5 inline-flex"
                                     onClick={()=> window.open('https://etherscan.io/token/0x6982508145454ce325ddbe47a25d4ec3d2311933', '_blank')}>
@@ -88,7 +88,7 @@ const About2 = () => {
                                     />
                                 </div>
 
-                                <div className="w-full h-auto my-2 bg-white rounded-2xl border border-stone-950 flex-col justify-center items-center gap-1 inline-flex" style={{border: '2px solid #081C00',
+                                <div className="w-auto absolute mt-[228px] z-10 px-10  h-auto my-2 bg-white rounded-2xl border border-stone-950 flex-col justify-center items-center gap-1 inline-flex" style={{border: '2px solid #081C00',
                                  display: links2? 'inline-flex':'none'}}>
                                     <div className="self-stretch py-2  hover:bg-neutral-100 rounded-2xl justify-center items-center gap-2.5 inline-flex"
                                     onClick={()=> window.open("https://etherscan.io/token/0x423f4e6138e475d85cf7ea071ac92097ed631eea", "_blank")}>

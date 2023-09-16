@@ -1,6 +1,8 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const Categories = () => {
+  const navigate=useNavigate()
   return (
     <div className='md:p-5 p-0'>
               <div className=" h-auto grid grid-cols-1 lg:grid-cols-2 items-start justify-start gap-[20px] text-11xl mt-[48px] lg:mt-[60px] md:p-0 p-[16px]">
@@ -10,7 +12,8 @@ const Categories = () => {
               alt=""
               src="/cover@2x.png"
             />
-            <div className="flex flex-row items-center justify-center gap-[20px] mb-[40px] cursor-pointer">
+            <div className="flex flex-row items-center justify-center gap-[20px] mb-[40px] cursor-pointer"
+            onClick={()=> navigate("/shop/#caps")}>
               <div className=" leading-[36px] uppercase  text-mini md:text-5xl">Caps</div>
               <div className="rounded-131xl bg-primary w-[104px] flex flex-row py-7 px-10 box-border items-center justify-center">
                 <img

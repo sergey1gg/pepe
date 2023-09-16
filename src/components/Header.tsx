@@ -2,11 +2,15 @@ import React from 'react'
 import { useState } from 'react'
 import Cart from './Cart';
 import { useLocation, useNavigate } from 'react-router-dom';
-const Header = () => {
+import { useWeb3Modal } from '@web3modal/react'
+import { useAccount } from 'wagmi'
+import { truncateEthAddress } from '../utils/truncAddress';
+const Header = ({searchInfo}: {searchInfo: any | null}) => {
   const location =useLocation()
   const navigate =useNavigate()
   const [card, openCard]=useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  console.log(searchInfo)
 
   const currentUrl = location.pathname;
   const toggleCard = () => {
@@ -17,12 +21,51 @@ const Header = () => {
       //document.body.style.overflow = 'auto';
     }
   };
+  const { open, close } = useWeb3Modal()
+  const { address} = useAccount()
+  const [search, openSearch]= useState<boolean>(false)
+  const [suggestedOptions, setSuggestedOptions] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const filterOptions = (searchTerm: string) => {
+    if(searchTerm !== ""){
+    const filteredOptions = searchInfo.filter((option: any) =>
+      option.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    return filteredOptions;
+    }
+  };
+  const handleInputChange = (e: any) => {
+    const newSearchTerm = e.target.value;
+    setSearchTerm(newSearchTerm);
+    const newSuggestedOptions = filterOptions(newSearchTerm);
+    setSuggestedOptions(newSuggestedOptions);
+  };
   return (
     <>
     <div className='px-5 pt-5'>
     <div className={`flex items-center justify-between flex-row-reverse left-0 w-auto text-mid `}>
     <div className="right-[30px] rounded-3xs flex flex-row items-end justify-start gap-[8px] text-mini">
-            <div className="cursor-pointer rounded-21xl bg-white flex flex-row p-3.5 items-start justify-start">
+    <div className="relative">
+  <input
+    type="text"
+    className={`w-full p-3.5 rounded-21xl overflow-hidden box-border relative gap-[16px] text-darkgray-300 font-body
+    ${search ? "block" : 'hidden'}`}
+    placeholder="Search"
+    value={searchTerm}
+    onChange={handleInputChange}
+  />
+
+  <div >
+    {suggestedOptions?.map((option: any, index) => (
+      <p className='absolute w-full text-center mt-1 rounded-21xl bg-white py-2 cursor-pointer' onClick={()=> navigate(`/product/${option.id}`)} key={index}>{option.name}</p>
+    ))}
+  </div>
+</div>
+
+            <div className={`cursor-pointer rounded-21xl bg-white flex flex-row p-3.5 items-start justify-start ${search? "hidden": 'block'}`}
+            onClick={()=> openSearch(!search)}>
+             
                 <img
                     className=" w-6 h-6 overflow-hidden shrink-0"
                     src="/search.svg"
@@ -34,9 +77,10 @@ const Header = () => {
                     src="/shoppingbag.svg"
                 />
             </div>
-            <div className="cursor-pointer hidden md:flex rounded-131xl bg-white  flex-row py-3.5 px-8 items-start justify-start">
+            <div className="cursor-pointer hidden md:flex rounded-131xl bg-white  flex-row py-3.5 px-8 items-start justify-start"
+             onClick={() => open()}>
                 <div className=" leading-[24px] uppercase">
-                    Connect wallet
+                    { truncateEthAddress(address)||"Connect wallet"}
                 </div>
             </div>
             <div className="flex xl:hidden rounded-21xl bg-white flex-row p-3.5 items-start justify-start"
@@ -55,7 +99,8 @@ const Header = () => {
             onClick={()=> navigate("/shop")}>
                 <div className="  uppercase">Shop</div>
             </div>
-            <div className="rounded-21xl hover:bg-black transition duration-500 ease-in-out hover:text-white w-[34%] flex flex-row py-3 px-4 box-border items-center justify-between">
+            <div className="rounded-21xl hover:bg-black transition duration-500 ease-in-out hover:text-white w-[34%] flex flex-row py-3 px-4 box-border items-center justify-between"
+            onClick={()=>  navigate("/#copenothing")}>
                 <div className=" uppercase">About</div>
             </div>
         </div>
@@ -109,6 +154,12 @@ const Header = () => {
       onClick={() => navigate("")}
     >
       <div className=" uppercase">About</div>
+    </div>
+    <div
+      className="rounded-21xl  hover:text-white flex flex-row py-3 px-4 box-border items-center justify-between"
+      onClick={() => open()}
+    >
+      <div className="  uppercase"> { truncateEthAddress(address)||"Connect wallet"}</div>
     </div>
   </div>
   </div>

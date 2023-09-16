@@ -1,14 +1,17 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const MainHeaderImg = () => {
+  const navigate=useNavigate()
   return (
 
 <div className=" top-[0px]  w-full h-[300px] xl:h-[620px] lg:h-[500px] mx-0 lg:mx-[30px]">
   <div
     className="absolute top-[209px] left-[calc(50%_-_97px)] leading-[24px] uppercase [-webkit-text-stroke:4px_#fff]"
-  ><p className="m-0">&nbsp;</p></div><div
+  ><p className="m-0">&nbsp;</p></div>
+  <div
     className=" cursor-pointer absolute top-[400.65px] md:top-[500px] lg:top-[600px]  left-[calc(50%_-_147.59px)] rounded-21xl [background:radial-gradient(50%_50%_at_50%_50%,_#525252,_#282828)] shadow-[0px_-4px_10px_rgba(255,_255,_255,_0.5)_inset,_0px_4px_10px_rgba(255,_255,_255,_0.5)_inset] box-border w-[292px] flex flex-row py-6 px-10 items-center justify-center [transform:_rotate(-3deg)] [transform-origin:0_0] text-mid text-white border-[6px] border-solid border-white"
-  ><div className="relative leading-[20px] uppercase">Shop now</div></div>
+  onClick={()=>navigate("/shop")}><div className="relative leading-[20px] uppercase">Shop now</div></div>
   <img
     className=" absolute right-0 mt-[111px] md:mt-0 w-auto h-[238.24px] md:h-[353px] xl:h-[657.24px] xl:w-[399px] object-cover
     lg:h-[547px] lg:w-[334px]  "

@@ -99,7 +99,7 @@ const Cart: React.FC<CartProps> = ({ toggleCard }) => {
                   style={{background: item.color}}/>
                 </div>
                 <div className="rounded-131xl bg-[#F5F5F5] w-[105px] overflow-hidden shrink-0 flex flex-row box-border items-center justify-center gap-[10px]">
-                  <div className=" rounded-131xl bg-primary w-6 h-6 overflow-hidden shrink-0"
+                  <div className=" rounded-131xl bg-primary w-6 h-6 overflow-hidden shrink-0 cursor-pointer"
                   onClick={() => removeItem(index)}>
                     <img
                       className=" top-[calc(50%_-_10px)] left-[calc(50%_-_10px)] w-5 h-5 overflow-hidden"
@@ -113,7 +113,7 @@ const Cart: React.FC<CartProps> = ({ toggleCard }) => {
                     />
                   </div>
                   <div className="flex-1 relative leading-[20px] uppercase">{item.quantity}</div>
-                  <div className="relative rounded-131xl bg-primary w-6 h-6 overflow-hidden shrink-0"
+                  <div className="relative rounded-131xl bg-primary w-6 h-6 overflow-hidden shrink-0 cursor-pointer"
                    onClick={() => updateQuantity(index, item.quantity + 1)}>
                     <img
                       className=" top-[calc(50%_-_10px)] left-[calc(50%_-_10px)] w-5 h-5 overflow-hidden"

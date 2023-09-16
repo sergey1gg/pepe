@@ -27,7 +27,7 @@ const featuresData = [
     },
     {
         id: 5,
-        name: 'SPANW',
+        name: 'SPAWN',
         img: '/img3.svg',
     },
 

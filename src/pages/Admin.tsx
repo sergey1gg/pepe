@@ -1,7 +1,10 @@
-import React, { useState, ChangeEvent, FormEvent } from 'react';
+import React, { useState, ChangeEvent, FormEvent, useEffect } from 'react';
 import axios from 'axios';
+import { getProducts } from '../api/items-api';
 
-interface AdminPanelProps {}
+interface AdminPanelProps {
+
+}
 
 const serverUrl = process.env.REACT_APP_SERVER_URL;
 
@@ -21,6 +24,22 @@ const AdminPanel: React.FC<AdminPanelProps> = () => {
   const [newsDrop, setNewsDrop] = useState<string>('');
 
   const [count,setCount]=useState<string>('')
+
+  const [featuresData, setFeaturesData] = useState<any[]>([]);
+
+useEffect(()=>{
+    const fetchProducts = async () => {
+      try {
+        const products = await getProducts();
+        setFeaturesData(products) 
+
+      } catch (error) {
+        alert(error);
+      }
+    };
+    fetchProducts();
+  }, []);
+  console.log(featuresData)
 
   const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;

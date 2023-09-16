@@ -17,7 +17,7 @@ const [card,setActiveCard]=useState<number>()
       <div  className='p-5 '>
       <div className="flex flex-col items-center justify-start gap-[28px] w-full mt-[16px] lg:mt-[40px]  ">
           <div className="w-full h-auto grid grid-cols-2 lg:grid-cols-3 flex-row items-start justify-start gap-[20px] text-left">
-              {featuresData.map((item: any,index: any) => (
+              {featuresData?.map((item: any,index: any) => (
 
                   <div key={index} className={`relative rounded-3xl bg-white overflow-hidden h-auto`}>
                       {card === item._id ? (

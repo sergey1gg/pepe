@@ -53,7 +53,7 @@ const Product = () => {
   };
   return (
     <main className=" bg-primary w-full h-full text-left text-xl text-black font-h-1">
-      <Header />
+      <Header searchInfo={null}/>
       {showNotification && (
         <Notification img={featuresData.images[0]} color={colorChoice} size={sizeChoice} name={featuresData.name}/>
       )}

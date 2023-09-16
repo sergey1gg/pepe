@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Description from './Description';
 
 const shippingMethods = [
-  { id: 1, name: 'Standard International', cost: 10, date: 'Estimated delivery Monday, 21 Aug–Monday, 11 Sept' },
+  { id: 1, name: 'Standard International', cost: 2, date: 'Estimated delivery Monday, 21 Aug–Monday, 11 Sept' },
   { id: 2, name: 'Fast', cost: 50, date: 'Estimated delivery Monday, 21 Aug–Monday, 11 Sept' },
   // Добавьте другие методы доставки по аналогии
 ];
@@ -43,7 +43,8 @@ const SpawnMethod: React.FC<SpawnProps> = ({currentStep, shippingCost}) => {
 <div className="mt-20 w-auto flex flex-row box-border items-center justify-between text-mini text-black font-button">
     <div className='font-h-1 cursor-pointer' onClick={()=> currentStep(prev => prev-1)}>Back</div>
                                 <div className="rounded-131xl bg-primary  py-3 px-10  leading-[24px] uppercase font-h-1 cursor-pointer"
-                                onClick={()=> currentStep(prev => prev+1)}>
+                                onClick={()=>{if (method!==undefined){ currentStep(prev => prev+1)}}}
+                                style={{opacity: method !==undefined? 1: 0.5}}>
                                     Continue to shiping
                                 </div>
                             </div>

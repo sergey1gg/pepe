@@ -12,7 +12,6 @@ const Payment = () => {
   const [shippingCost, setShippingCost]=useState(0)
   useEffect(() => {
     const storedCart = JSON.parse(localStorage.getItem('cart') || '[]');
-
     setCart(storedCart);
     const newTotalAmount = storedCart.reduce((total: number, item: any) => {
       return total + (item.product.cost * item.quantity);
@@ -84,14 +83,14 @@ const Payment = () => {
                         ) : step === 3 ? (
                             <SpawnMethod currentStep={currentStep} shippingCost={setShippingCost}/>
                         ) : step === 4 ? (
-                            <Pay currentStep={currentStep}/> 
+                            <Pay currentStep={currentStep} totalAmount={totalAmount+shippingCost}/> 
                         ): null}
                     </div>
                     <div className=" flex flex-col items-center justify-between rounded-11xl bg-white h-full overflow-hidden p-2">
                         <div className="w-full top-[24px] left-[20px] flex flex-col items-center justify-start gap-[12px] font-button">
                             <div className="w-full flex flex-col items-center justify-center gap-[5px] ">
                             {cart?.map((item: any,index)=>(
-                                <div className='flex w-full lg:scale-90 scale-100 xl:scale-100'>
+                                <div key={index} className='flex w-full lg:scale-90 scale-100 xl:scale-100'>
                                 <img
                                 key={index}
                                     className="relativew-auto h-[88px] lg:h-[74px] xl:h-[88px] object-cover"
